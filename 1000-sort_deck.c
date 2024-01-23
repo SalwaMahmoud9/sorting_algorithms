@@ -1,8 +1,3 @@
-/*
- * File: 1000-sort_deck.c
- * Auth: Brennan D Baraban
- */
-
 #include "deck.h"
 
 int _strcmp(const char *s1, const char *s2);
@@ -12,13 +7,9 @@ void insertion_sort_deck_value(deck_node_t **deck);
 void sort_deck(deck_node_t **deck);
 
 /**
- * _strcmp - Compares two strings.
- * @s1: The first string to be compared.
- * @s2: The second string to be compared.
- *
- * Return: Positive byte difference if s1 > s2
- *         0 if s1 == s2
- *         Negative byte difference if s1 < s2
+ * _strcmp - _strcmp.
+ * @s1: first string.
+ * @s2: second.
  */
 int _strcmp(const char *s1, const char *s2)
 {
@@ -34,10 +25,8 @@ int _strcmp(const char *s1, const char *s2)
 }
 
 /**
- * get_value - Get the numerical value of a card.
- * @card: A pointer to a deck_node_t card.
- *
- * Return: The numerical value of the card.
+ * get_value - get_value.
+ * @card: pointer to card.
  */
 char get_value(deck_node_t *card)
 {
@@ -71,8 +60,8 @@ char get_value(deck_node_t *card)
 }
 
 /**
- * insertion_sort_deck_kind - Sort a deck of cards from spades to diamonds.
- * @deck: A pointer to the head of a deck_node_t doubly-linked list.
+ * insertion_sort_deck_kind - insertion_sort_deck_kind.
+ * @deck: pointer to head.
  */
 void insertion_sort_deck_kind(deck_node_t **deck)
 {
@@ -100,9 +89,8 @@ void insertion_sort_deck_kind(deck_node_t **deck)
 }
 
 /**
- * insertion_sort_deck_value - Sort a deck of cards sorted from
- *                             spades to diamonds from ace to king.
- * @deck: A pointer to the head of a deck_node_t doubly-linked list.
+ * insertion_sort_deck_value - insertion_sort_deck_value.
+ * @deck: pointer to heads.
  */
 void insertion_sort_deck_value(deck_node_t **deck)
 {
@@ -132,9 +120,8 @@ void insertion_sort_deck_value(deck_node_t **deck)
 }
 
 /**
- * sort_deck - Sort a deck of cards from ace to king and
- *             from spades to diamonds.
- * @deck: A pointer to the head of a deck_node_t doubly-linked list.
+ * sort_deck - sort_deck.
+ * @deck: pointer to head.
  */
 void sort_deck(deck_node_t **deck)
 {
