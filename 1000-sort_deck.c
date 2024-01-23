@@ -1,43 +1,28 @@
-/*
- * File: 1000-sort_deck.c
- * Auth: Brennan D Baraban
- */
-
 #include "deck.h"
 
-int _strcmp(const char *s1, const char *s2);
-char get_value(deck_node_t *card);
-void insertion_sort_deck_kind(deck_node_t **deck);
-void insertion_sort_deck_value(deck_node_t **deck);
-void sort_deck(deck_node_t **deck);
-
 /**
- * _strcmp - Compares two strings.
- * @s1: The first string to be compared.
- * @s2: The second string to be compared.
- *
- * Return: Positive byte difference if s1 > s2
- *         0 if s1 == s2
- *         Negative byte difference if s1 < s2
+ * _strcmp - _strcmp
+ * @ss1: ss1
+ * @ss2: ss2
+ * Return: int
  */
-int _strcmp(const char *s1, const char *s2)
+int _strcmp(const char *ss1, const char *ss2)
 {
-	while (*s1 && *s2 && *s1 == *s2)
+	while (*ss1 && *ss2 && *ss1 == *ss2)
 	{
-		s1++;
-		s2++;
+		ss1++;
+		ss2++;
 	}
 
-	if (*s1 != *s2)
-		return (*s1 - *s2);
+	if (*ss1 != *ss2)
+		return (*ss1 - *ss2);
 	return (0);
 }
 
 /**
- * get_value - Get the numerical value of a card.
- * @card: A pointer to a deck_node_t card.
- *
- * Return: The numerical value of the card.
+ * get_value - get_value
+ * @card: card
+ * Return: char
  */
 char get_value(deck_node_t *card)
 {
@@ -71,70 +56,71 @@ char get_value(deck_node_t *card)
 }
 
 /**
- * insertion_sort_deck_kind - Sort a deck of cards from spades to diamonds.
- * @deck: A pointer to the head of a deck_node_t doubly-linked list.
+ * insertion_sort_deck_kind - insertion_sort_deck_kind
+ * @dk: dk
+ * Return: void
  */
-void insertion_sort_deck_kind(deck_node_t **deck)
+void insertion_sort_deck_kind(deck_node_t **dk)
 {
-	deck_node_t *iter, *insert, *tmp;
+	deck_node_t *ir, *in, *tmp;
 
-	for (iter = (*deck)->next; iter != NULL; iter = tmp)
+	for (ir = (*dk)->next; ir != NULL; ir = tmp)
 	{
-		tmp = iter->next;
-		insert = iter->prev;
-		while (insert != NULL && insert->card->kind > iter->card->kind)
+		tmp = ir->next;
+		in = ir->prev;
+		while (in != NULL && in->card->kind > ir->card->kind)
 		{
-			insert->next = iter->next;
-			if (iter->next != NULL)
-				iter->next->prev = insert;
-			iter->prev = insert->prev;
-			iter->next = insert;
-			if (insert->prev != NULL)
-				insert->prev->next = iter;
+			in->next = ir->next;
+			if (ir->next != NULL)
+				ir->next->prev = in;
+			ir->prev = in->prev;
+			ir->next = in;
+			if (in->prev != NULL)
+				in->prev->next = ir;
 			else
-				*deck = iter;
-			insert->prev = iter;
-			insert = iter->prev;
+				*dk = ir;
+			in->prev = ir;
+			in = ir->prev;
 		}
 	}
 }
 
 /**
- * insertion_sort_deck_value - Sort a deck of cards sorted from
- *                             spades to diamonds from ace to king.
- * @deck: A pointer to the head of a deck_node_t doubly-linked list.
+ * insertion_sort_deck_value - insertion_sort_deck_value
+ * @dk: dk
+ * Return: void
  */
-void insertion_sort_deck_value(deck_node_t **deck)
+void insertion_sort_deck_value(deck_node_t **dk)
 {
-	deck_node_t *iter, *insert, *tmp;
+	deck_node_t *ir, *in, *tmp;
 
-	for (iter = (*deck)->next; iter != NULL; iter = tmp)
+	for (ir = (*dk)->next; ir != NULL; ir = tmp)
 	{
-		tmp = iter->next;
-		insert = iter->prev;
-		while (insert != NULL &&
-		       insert->card->kind == iter->card->kind &&
-		       get_value(insert) > get_value(iter))
+		tmp = ir->next;
+		in = ir->prev;
+		while (in != NULL &&
+		       in->card->kind == ir->card->kind &&
+		       get_value(in) > get_value(ir))
 		{
-			insert->next = iter->next;
-			if (iter->next != NULL)
-				iter->next->prev = insert;
-			iter->prev = insert->prev;
-			iter->next = insert;
-			if (insert->prev != NULL)
-				insert->prev->next = iter;
+			in->next = ir->next;
+			if (ir->next != NULL)
+				ir->next->prev = in;
+			ir->prev = in->prev;
+			ir->next = in;
+			if (in->prev != NULL)
+				in->prev->next = ir;
 			else
-				*deck = iter;
-			insert->prev = iter;
-			insert = iter->prev;
+				*dk = ir;
+			in->prev = ir;
+			in = ir->prev;
 		}
 	}
 }
 
 /**
- * sort_deck - Sort a deck of cards from ace to king and
- *             from spades to diamonds.
- * @deck: A pointer to the head of a deck_node_t doubly-linked list.
+ * sort_deck - sort_deck
+ * @deck: deck
+ * Return: void
  */
 void sort_deck(deck_node_t **deck)
 {
